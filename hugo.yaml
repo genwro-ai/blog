@@ -1,0 +1,74 @@
+baseURL: https://example.org/
+title: Research blog
+languageCode: en-us
+theme: ["PaperMod"]
+
+
+taxonomies:
+  category: categories
+  tag: tags
+
+menu:
+  main:
+    - identifier: categories
+      name: Categories
+      url: /categories/
+      weight: 10
+    - identifier: tags
+      name: Tags
+      url: /tags/
+      weight: 20
+    - identifier: archives
+      name: Archives
+      url: /archives/
+      weight: 30
+    - identifier: search
+      name: Search
+      url: /search/
+      weight: 40
+
+params:
+  defaultTheme: auto
+  disableThemeToggle: false
+  ShowShareButtons: true
+  images: ["/images/genwro_logo.svg", "/images/genwro_logo_dark.svg"]
+  homeInfoParams:
+    Title: "Hi there 👋"
+    Content: >
+      Welcome to my blog.
+
+      - Here I share my thoughts and experiences
+      - Feel free to explore my posts
+  
+  assets:
+    favicon: "/favicon.ico"
+    disableHLJS: false
+
+  label:
+    icon: "/images/genwro_logo.svg"
+    iconDark: "/images/genwro_logo_dark.svg"
+    iconHeight: 45
+
+  
+  searchHidden: false
+  ShowBreadCrumbs: true
+  ShowShareButtons: true
+  ShowPostNavLinks: true
+  ShowCodeCopyButtons: true
+  
+  fuseOpts:
+    isCaseSensitive: false
+    shouldSort: true
+    location: 0
+    distance: 1000
+    threshold: 0.4
+    minMatchCharLength: 0
+    keys: ["title", "permalink", "summary", "content"]
+  
+  ShowArchiveCount: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON 
