@@ -1,4 +1,4 @@
-baseURL: https://example.org/
+baseURL: https://genwro-ai.github.io/blog/
 title: Research blog
 languageCode: en-us
 paginate.pagerSize: 5
@@ -66,7 +66,7 @@ params:
     - name: github
       url: https://github.com/genwro-ai
     - name: rss
-      url: http://localhost:1313/index.xml
+      url: https://genwro-ai.github.io/blog/index.xml
   
   assets:
     favicon: "/favicon.ico"
