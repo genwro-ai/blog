@@ -1,7 +1,20 @@
 baseURL: https://example.org/
 title: Research blog
 languageCode: en-us
+paginate.pagerSize: 5
 theme: ["PaperMod"]
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: false
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+mainsections: ["posts", "papermod"]
+
+minify:
+  disableXML: true
 
 
 taxonomies:
@@ -28,17 +41,32 @@ menu:
       weight: 40
 
 params:
+  env: production
   defaultTheme: auto
   disableThemeToggle: false
-  ShowShareButtons: true
   images: ["/images/genwro_logo.svg", "/images/genwro_logo_dark.svg"]
+  math: true
   homeInfoParams:
+    enabled: false
     Title: "Hi there 👋"
     Content: >
-      Welcome to my blog.
+      We're **genwro.AI**, an AI research group at Wrocław University of Science and Technology.
+      <br>
+      In this blog you can find:<br>
+      • latest updates on what we're researching and building,<br>
+      • regular "What We're Reading" posts where our team shares interesting papers and reports,<br>
+      • tutorials and explanations of ML concepts we work with,<br>
+      • tips and tricks we've learned along the way - useful whether you're just starting or already in the field.
 
-      - Here I share my thoughts and experiences
-      - Feel free to explore my posts
+  socialIcons:
+    - name: website
+      url: https://genwro.ai.pwr.edu.pl/
+    - name: linkedin
+      url: https://www.linkedin.com/company/genwro-ai/
+    - name: github
+      url: https://github.com/genwro-ai
+    - name: rss
+      url: http://localhost:1313/index.xml
   
   assets:
     favicon: "/favicon.ico"
@@ -47,15 +75,20 @@ params:
   label:
     icon: "/images/genwro_logo.svg"
     iconDark: "/images/genwro_logo_dark.svg"
-    iconHeight: 45
-
+    iconHeight: 35  
   
   searchHidden: false
   ShowBreadCrumbs: true
-  ShowShareButtons: true
   ShowPostNavLinks: true
   ShowCodeCopyButtons: true
-  
+  ShowReadingTime: true
+  ShowRssButtonInSectionTermList: true
+  ShowFullTextinRSS: true
+  ShowAllPagesInArchive: true
+  ShowArchiveCount: true
+  ShowPageNums: true
+  ShowToc: true
+
   fuseOpts:
     isCaseSensitive: false
     shouldSort: true
@@ -64,11 +97,16 @@ params:
     threshold: 0.4
     minMatchCharLength: 0
     keys: ["title", "permalink", "summary", "content"]
-  
-  ShowArchiveCount: true
 
 outputs:
   home:
     - HTML
     - RSS
     - JSON 
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+  highlight:
+    noClasses: false
