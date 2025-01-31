@@ -51,12 +51,6 @@ jobs:
           hugo \
             --buildDrafts --gc \
             --baseURL ${{ steps.pages.outputs.base_url }}
-      - name: List public directory
-        run: |
-          echo "Contents of public/images:"
-          ls -la public/images/
-          echo "Contents of public/js:"
-          ls -la public/js/
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
