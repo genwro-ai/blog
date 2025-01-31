@@ -51,7 +51,7 @@ jobs:
           hugo \
             --buildDrafts --gc \
             --baseURL ${{ steps.pages.outputs.base_url }}
-       - name: List public directory
+      - name: List public directory
         run: |
           echo "Contents of public/images:"
           ls -la public/images/
