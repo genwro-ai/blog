@@ -73,8 +73,8 @@ params:
     disableHLJS: false
 
   label:
-    icon: "/images/genwro_logo.svg"
-    iconDark: "/images/genwro_logo_dark.svg"
+    icon: "images/genwro_logo.svg"
+    iconDark: "images/genwro_logo_dark.svg"
     iconHeight: 35  
   
   searchHidden: false
