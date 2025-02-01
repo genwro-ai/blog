@@ -1,0 +1,54 @@
+{{ $path := .File.Dir }}
+{{ $bibFile := printf "%sreferences.bib" $path }}
+{{ if fileExists $bibFile }}
+  {{ $bibContent := readFile $bibFile }}
+  {{ $citations := slice }}
+  {{ range split $bibContent "@" }}
+    {{ if ne . "" }}
+      {{ $entry := . }}
+      {{ $type := index (findRE `^[^{]+` .) 0 }}
+      {{ $key := index (findRE `\{([^,]+),` .) 0 | strings.TrimPrefix "{" | strings.TrimSuffix "," }}
+      {{ $title := index (findRE `title\s*=\s*[\{"]?([^}\"]+)[\}"]?` .) 0 | replaceRE `title\s*=\s*[\{"]?([^}\"]+)[\}"]?` "$1" }}
+      {{ $author := index (findRE `author\s*=\s*[\{"]?([^}\"]+)[\}"]?` .) 0 | replaceRE `author\s*=\s*[\{"]?([^}\"]+)[\}"]?` "$1" }}
+      {{ $year := index (findRE `year\s*=\s*[\{"]?(\d{4})[\}"]?` .) 0 | replaceRE `year\s*=\s*[\{"]?(\d{4})[\}"]?` "$1" }}
+      {{/* Add journal and publisher fields */}}
+      {{ $journal := "" }}
+      {{ $journalMatch := findRE `journal\s*=\s*[\{"]?([^}\"]+)[\}"]?` . }}
+      {{ if $journalMatch }}
+        {{ $journal = index $journalMatch 0 | replaceRE `journal\s*=\s*[\{"]?([^}\"]+)[\}"]?` "$1" }}
+      {{ end }}
+      
+      {{ $publisher := "" }}
+      {{ $publisherMatch := findRE `publisher\s*=\s*[\{"]?([^}\"]+)[\}"]?` . }}
+      {{ if $publisherMatch }}
+        {{ $publisher = index $publisherMatch 0 | replaceRE `publisher\s*=\s*[\{"]?([^}\"]+)[\}"]?` "$1" }}
+      {{ end }}
+      {{ $citations = $citations | append (dict "key" $key "title" $title "author" $author "year" $year "type" $type "journal" $journal "publisher" $publisher) }}
+    {{ end }}
+  {{ end }}
+
+  {{/* Get cited keys from .Scratch */}}
+  {{ $citedKeys := .Scratch.Get "citedKeys" }}
+  {{ if $citedKeys }}
+    {{ $citedCitations := slice }}
+    {{ range $citations }}
+      {{ if in $citedKeys .key }}
+        {{ $citedCitations = $citedCitations | append . }}
+      {{ end }}
+    {{ end }}
+    
+    {{/* Only show references if we have cited items */}}
+    {{ if gt (len $citedCitations) 0 }}
+      <div class="citations">
+        <h2>References</h2>
+        <ol class="citation-list">
+          {{ range $citedCitations }}
+            <li id="cite-{{ .key }}" class="citation-item">
+              {{ .author }} ({{ .year }}). {{ .title }}. {{ if .journal }} {{ .journal }}. {{ else if .publisher }} {{ .publisher }}. {{ end }}
+            </li>
+          {{ end }}
+        </ol>
+      </div>
+    {{ end }}
+  {{ end }}
+{{ end }}

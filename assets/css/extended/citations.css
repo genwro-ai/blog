@@ -1,0 +1,24 @@
+.citations {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.citation-list {
+  padding-left: 2rem;
+}
+
+.citation-item {
+  margin-bottom: 1rem;
+  padding-left: 1rem;
+}
+
+.citation-ref {
+  /* Remove font-size adjustment */
+  font-size: 1em;
+  /* Remove vertical-align and top position */
+  vertical-align: baseline;
+  color: var(--secondary);
+  text-decoration: none;
+  padding: 0 2px;
+}

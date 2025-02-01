@@ -1,0 +1,48 @@
+{{ $rawKeys := .Get 0 }}
+{{ $keys := split $rawKeys "," }}
+{{ $path := .Page.File.Dir }}
+{{ $bibFile := printf "%sreferences.bib" $path }}
+{{ if fileExists $bibFile }}
+  {{ $bibContent := readFile $bibFile }}
+  {{ $citations := slice }}
+  {{ range split $bibContent "@" }}
+    {{ if ne . "" }}
+      {{ $citationKey := index (findRE `\{([^,]+),` .) 0 | strings.TrimPrefix "{" | strings.TrimSuffix "," }}
+      {{ $citations = $citations | append $citationKey }}
+    {{ end }}
+  {{ end }}
+  
+  {{ $indices := slice }}
+  {{ $keyMap := slice }}
+  {{ range $keys }}
+    {{ $key := trim . " " }}
+    {{ $index := 0 }}
+    {{ range $i, $citation := $citations }}
+      {{ if eq $citation $key }}
+        {{ $index = add $i 1 }}
+      {{ end }}
+    {{ end }}
+    {{ if gt $index 0 }}
+      {{ $indices = $indices | append $index }}
+      {{ $keyMap = $keyMap | append $key }}
+      
+      {{/* Track this citation in .Scratch */}}
+      {{ $citedKeys := $.Page.Scratch.Get "citedKeys" }}
+      {{ if not $citedKeys }}
+        {{ $citedKeys = slice }}
+      {{ end }}
+      {{ if not (in $citedKeys $key) }}
+        {{ $.Page.Scratch.Set "citedKeys" ($citedKeys | append $key) }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+  
+  {{ if gt (len $indices) 0 }}
+    <span class="citation-ref">[
+    {{- range $i, $index := $indices -}}
+      {{- if gt $i 0 }}, {{ end -}}
+      <a href="#cite-{{ index $keyMap $i }}">{{ $index }}</a>
+    {{- end -}}
+    ]</span>
+  {{ end }}
+{{ end }}
