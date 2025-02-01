@@ -15,17 +15,41 @@ Here you can find:
 1. Install `hugo`.
 2. Clone the repo.
 3. Initialize theme submodules: `git submodule update --init --recursive`.
-4. Run `hugo new posts/<post-name>` to create a new post.
-5. Run `hugo serve -D` to create/update static files and serve the website.
+4. Run `hugo serve -D` to create/update static files and serve the website.
 
 
 ### Writing Posts
+
+```bash
+# Create a new post
+hugo new posts/<post-name>.md
+
+# For a post with references
+hugo new --kind posts posts/<optional-directory>/<post-name>
+```
+
 Posts should be written in Markdown format. The front matter should include:
 - title,
 - date,
 - author,
 - category,
 - tags (optional).
+
+Exemplary front matter:
+```yaml
+---
+title: "Your Post Title"
+date: 2024-02-01
+author: "Your Name"
+category: ["Research", "Tutorial", "Paper Review"]
+tags: ["machine-learning", "neural-networks"]
+draft: false
+---
+```
+
+#### Using BibTeX references
+
+Simply add required references into your `references.bib` and when you want to cite one or more of the articles, use `{{< cite ref-key >}}` or `{{< cite "ref-key1, ref-key2" >}}`.
 
 ### Contribution
 
