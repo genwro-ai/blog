@@ -88,6 +88,7 @@ params:
   ShowArchiveCount: true
   ShowPageNums: true
   ShowToc: true
+  disableScrollToTop: false
 
   fuseOpts:
     isCaseSensitive: false

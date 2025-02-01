@@ -39,5 +39,3 @@ This blog is built with:
 * [PaperMod](https://github.com/adityatelange/hugo-PaperMod) theme - A clean, fast, and responsive Hugo theme
 * GitHub Actions for automated deployment and continuous integration
 * GitHub Pages for hosting
-
-Special thanks to the Hugo and PaperMod communities for their excellent documentation and support.
