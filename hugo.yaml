@@ -69,7 +69,7 @@ params:
       url: https://genwro-ai.github.io/blog/index.xml
   
   assets:
-    favicon: "/favicon.ico"
+    favicon: "assets/favicon.ico"
     disableHLJS: false
 
   label:
@@ -88,6 +88,7 @@ params:
   ShowArchiveCount: true
   ShowPageNums: true
   ShowToc: true
+  disableScrollToTop: false
 
   fuseOpts:
     isCaseSensitive: false
