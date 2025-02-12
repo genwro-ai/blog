@@ -1,4 +1,11 @@
-{{ if not hugo.IsServer }}
-<script data-goatcounter="https://genwro-ai-goat-code.goatcounter.com/count"
-        async src="//gc.zgo.at/count.js"></script>
-{{ end }}
+<span id="post-views"></span>
+<script>
+    if (window.goatcounter && window.goatcounter.visit_count) {
+        window.goatcounter.visit_count({
+            path: location.pathname,
+            callback: function(count) {
+                document.getElementById('post-views').innerText = count;
+            }
+        });
+    }
+</script>
