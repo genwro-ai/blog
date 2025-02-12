@@ -25,6 +25,11 @@
       {{- partial "translation_list.html" . -}}
       {{- partial "edit_post.html" . -}}
       {{- partial "post_canonical.html" . -}}
+      ·&nbsp;<span class="post-views">
+        <span data-goatcounter-click-count 
+          data-goatcounter-title="{{ .Title }}"
+          data-goatcounter-path="{{ .RelPermalink }}">
+        </span> views</span>
     </div>
     {{- end }}
   </header>
