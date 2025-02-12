@@ -1,0 +1,10 @@
+.post-meta-views {
+    margin-left: 8px;
+    color: var(--secondary);
+}
+
+.post-meta-views::before {
+    content: "•";
+    margin-right: 8px;
+    color: var(--secondary);
+}

@@ -57,6 +57,10 @@ params:
       • regular "What We're Reading" posts where our team shares interesting papers and reports,<br>
       • tutorials and explanations of ML concepts we work with,<br>
       • tips and tricks we've learned along the way - useful whether you're just starting or already in the field.
+  
+  analytics:
+    goatcounter:
+      code: "genwro-ai-goat-code"
 
   socialIcons:
     - name: website
