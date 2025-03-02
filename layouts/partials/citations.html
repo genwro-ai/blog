@@ -8,7 +8,16 @@
       {{ $entry := . }}
       {{ $type := index (findRE `^[^{]+` .) 0 }}
       {{ $key := index (findRE `\{([^,]+),` .) 0 | strings.TrimPrefix "{" | strings.TrimSuffix "," }}
-      {{ $title := index (findRE `title\s*=\s*[\{"]?([^}\"]+)[\}"]?` .) 0 | replaceRE `title\s*=\s*[\{"]?([^}\"]+)[\}"]?` "$1" }}
+      {{ $title := "" }}
+      {{ $titleMatch := findRE `title\s*=\s*\{([^}]+)\}` . }}
+      {{ if $titleMatch }}
+        {{ $title = index $titleMatch 0 | replaceRE `title\s*=\s*\{([^}]+)\}` "$1" }}
+      {{ else }}
+        {{ $titleMatch = findRE `title\s*=\s*"([^"]+)"` . }}
+        {{ if $titleMatch }}
+          {{ $title = index $titleMatch 0 | replaceRE `title\s*=\s*"([^"]+)"` "$1" }}
+        {{ end }}
+      {{ end }}
       {{ $author := index (findRE `author\s*=\s*[\{"]?([^}\"]+)[\}"]?` .) 0 | replaceRE `author\s*=\s*[\{"]?([^}\"]+)[\}"]?` "$1" }}
       {{ $year := index (findRE `year\s*=\s*[\{"]?(\d{4})[\}"]?` .) 0 | replaceRE `year\s*=\s*[\{"]?(\d{4})[\}"]?` "$1" }}
       {{/* Add journal and publisher fields */}}
