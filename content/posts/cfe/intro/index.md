@@ -13,16 +13,16 @@ In a world increasingly shaped by algorithmic decisions, a fundamental question 
 when AI makes a decision about us, how can we understand why and &mdash; more importantly &mdash; what we could change 
 to get a different outcome?
 
-Explainable AI (XAI) is all about answering those questions, pulling back the curtain on black-box algorithms. 
+Explainable AI (XAI) is all about answering those questions, pulling back the curtain from black-box algorithms. 
 But while most XAI tools tell you what went wrong, one approach &mdash; counterfactual explanations (CFEs) &mdash; goes further.
 CFEs don't just tell you why an AI decided what it did, but shows you how that decision could be different.
 
 # XAI Basics: LIME, SHAP, and the CFE Twist
 
-Explainable AI (XAI) emerged from a simple need: if AI systems make decisions affecting people's lives, 
+Explainable AI (XAI) {{< cite "manifesto, survey" >}} emerged from a simple need: if AI systems make decisions affecting people's lives, 
 those decisions should be understandable. Traditional approaches like LIME (Local Interpretable Model-agnostic Explanations)
 {{< cite "lime" >}} and SHAP (SHapley Additive exPlanations) {{< cite "shap" >}} have become the workhorses of XAI.
-These methods tell us what features matter in a prediction:
+These methods tell us what features matter in a prediction.
 
 LIME creates a simplified, interpretable model around a specific prediction, while SHAP assigns importance values to each feature based on game theory principles. 
 LIME zooms in on local decisions and SHAP spreads the credit across all features.
@@ -37,7 +37,6 @@ Feature | LIME/SHAP | Counterfactual Explanations
 Focus | Feature importance | Actionable changes
 Question answered | "Why this decision?" | "How to get a different decision?"
 User benefit | Understanding | Actionability
-Complexity | Can be high-dimensional | Typically sparse and focused
 
 ---
 
@@ -47,6 +46,21 @@ Here’s an example: An AI denies your loan because your income is 100 000 zł. 
 
 
 # The Math: A Formal Look Under the Hood
+
+CFEs can be formulated like in {{< cite "Guidotti2022" >}}:
+
+> Given a classifier $b$ that outputs the decision $y = b(x)$ for an instance $x$, a counterfactual explanation consists of an instance $x'$ such that the decision for $b$ on $x'$ is different from $y$, i.e., $b(x') \neq y$, and such that the difference between $x$ and $x'$ is minimal.
+
+One of the first approaches to generating counterfactual explanations was proposed by Wachter et al. {{< cite "Wachter2017" >}}, who formulated it as an unconstrained optimization problem. 
+
+Given an input instance $x_0$ and a desired outcome $y'$, their approach finds a counterfactual $x'$ by minimizing:
+$$
+\arg⁡min_{⁡x'}\ell\left(h(x')−y'\right)^2+\lambda\cdot d\left(x_0,x'\right)
+$$
+
+where $\ell(\cdot)$ is a loss function, typically squared error, $d(x_0, x')$ is a distance metric (e.g., Manhattan or Euclidean) and $\lambda$ controls the trade-off between prediction accuracy and proximity to the original instance.
+
+While Wachter's formulation provides a solid mathematical foundation, numerous alternative approaches have been developed to address various aspects of counterfactual generation. In future posts, we will explore these methods in more detail and also present our own findings on effective ways to generate useful counterfactual explanations.
 
 # More Examples: CFEs in Action
 
@@ -58,7 +72,10 @@ Let’s bring CFEs to life with a few scenarios:
 
 **Spam Filter**: An email’s flagged. CFE: “Drop the word ‘free,’ and it’s safe.”
 
-These examples show CFEs’ power: they reveal what matters most and spark questions. Are the changes fair? Practical?
+These examples show how CFEs reveal what truly matters in model decisions. By examining these decision boundaries,
+we can better assess if the AI is making fair judgments. Is it reasonable that a small change in blood pressure 
+completely flips a medical recommendation? Should two years of experience be the deciding factor in hiring? 
+CFEs help us question whether models are using appropriate criteria when making important decisions about people's lives.
 
 # Why CFEs Matter: Real-World Impact
 
@@ -74,9 +91,7 @@ Counterfactual explanations aren't just theoretically interesting &mdash;they ha
 
 **Improving Models**: Examining counterfactuals helps data scientists understand model behavior and identify opportunities for improvement.
 
-# genwro.AI’s Journey: Our Work and What’s Next
-
-# Conclusion: “From Prediction to Possibility”
+# Conclusion
 
 Counterfactual explanations represent a fundamental shift in how we think about AI transparency. 
 Rather than simply explaining what is, they illuminate what could be.
