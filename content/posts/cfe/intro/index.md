@@ -1,5 +1,5 @@
 ---
-date: '2025-03-01T17:23:11+01:00'
+date: '2026-10-05T17:23:11+02:00'
 author: "Marcin Kostrzewa"
 draft: false
 title: 'Introduction to Counterfactual Explanations'

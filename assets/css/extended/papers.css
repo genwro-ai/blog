@@ -1,0 +1,19 @@
+/* workshop / venue label under a paper title */
+.post-content .venue {
+  margin: -4px 0 12px;
+}
+
+.post-content .venue span {
+  display: inline-block;
+  padding: 1px 10px;
+  border: 1px solid #e41717;
+  border-radius: 4px;
+  color: #e41717;
+  font-size: 0.8em;
+  font-weight: 600;
+}
+
+.dark .post-content .venue span {
+  color: #ff5c5c;
+  border-color: #ff5c5c;
+}

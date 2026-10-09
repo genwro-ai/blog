@@ -1,5 +1,5 @@
 ---
-date: '2025-02-02T13:19:25+01:00'
+date: '2026-09-30T13:19:25+02:00'
 draft: false
 title: 'Welcome Post'
 categories: general
