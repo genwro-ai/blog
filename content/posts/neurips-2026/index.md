@@ -43,36 +43,40 @@ A pipeline that applies realistic, physics-inspired damage to film footage, toge
 
 ### Robust to Which Model Change? A Unified Evaluation of Robust Counterfactual Explanations
 
+{{< venue "Trust-AI-Eval workshop" >}}
+
 **Marcin Kostrzewa**, **Maciej Zięba** · [arXiv](https://arxiv.org/abs/2609.30918)
 
-*Trust-AI-Eval workshop.* One evaluation protocol for robust counterfactual explanations, covering eight types of model change.
+One evaluation protocol for robust counterfactual explanations, covering eight types of model change.
 
 ### Beyond Local Linearity: Scale-Resolved Geometry of Learned Image Encoders
 
+{{< venue "NeurReps workshop" >}}
+
 Jakub Szymkowiak, Wojtek Palubicki, **Kamil Adamczewski**
 
-*NeurReps workshop.* Image encoders carry a geometric signature that only emerges through learning.
+Image encoders carry a geometric signature that only emerges through learning.
 
-### Cylindrical Flow Matching for Complex-Valued Medical Image Synthesis
+### CyFM: Cylindrical Optimal Transport for Few-Step Complex-Valued Flow Matching
 
-Marcel Musiałek, Iga Wolanin, Damian Ryczko, Anna Grelewska, **Oleksii Furman** · [arXiv](https://arxiv.org/abs/2609.14171) (listed there as *CyFM: Cylindrical Optimal Transport for Few-Step Complex-Valued Flow Matching*)
+{{< venue "GDDL workshop" >}}
 
-*GDDL workshop.* Flow matching for complex-valued signals such as MRI, modelled in amplitude-phase coordinates. In single-step generation the error is up to 2.1× lower.
+Marcel Musiałek, Iga Wolanin, Damian Ryczko, Anna Grelewska, **Oleksii Furman** · [arXiv](https://arxiv.org/abs/2609.14171)
+
+Flow matching for complex-valued signals such as MRI, modelled in amplitude-phase coordinates. In single-step generation the error is up to 2.1× lower.
 
 ### SADGE: Spatially-Adaptive Diffusion Guided by Estimated Degradation for Image Restoration
 
+{{< venue "STODY workshop" >}}
+
 Dominik Galus, Michał Furgała, Piotr Ryszko, **Wojciech Kozłowski**
 
-*STODY workshop.* A diffusion-based restoration method that concentrates on the damaged regions of an image and hallucinates less. We built it together with the Solvro student research club.
+A diffusion-based restoration method that concentrates on the damaged regions of an image and hallucinates less. We built it together with the Solvro student research club.
 
 ### ALLMTS: Automated LLM-based Medical Triage System
 
+{{< venue "GenAI4Health workshop" >}}
+
 Michał Remigiusz Janiszewski, Artur Stopa, **Łukasz Lenkiewicz**, Wojciech Achtelik, Bartosz Adam Gonczarek
 
-*GenAI4Health workshop.* A triage system where the LLM executes clinical guidelines instead of guessing the answer. It reaches 95% accuracy; a raw LLM gets 47%.
-
-## More to come
-
-Two of these papers, CounterFlowNet and the robustness evaluation, are about counterfactual explanations. If you'd like the background first, our [introduction to counterfactual explanations]({{< ref "/posts/cfe/intro/index.md" >}}) covers the basics.
-
-We'll add links to the remaining papers once they're public. If you're going to NeurIPS, come and talk to us.
+A triage system where the LLM executes clinical guidelines instead of guessing the answer. It reaches 95% accuracy; a raw LLM gets 47%.
