@@ -43,7 +43,7 @@ Restoring archival film remains a fundamentally challenging problem due to the a
 
 ### Robust to Which Model Change? A Unified Evaluation of Robust Counterfactual Explanations
 
-{{< venue "Trust-AI-Eval workshop" >}}
+{{< venue "Trustworthy AI Evaluation workshop" >}}
 
 **Marcin Kostrzewa**, **Maciej Zięba** · [arXiv](https://arxiv.org/abs/2609.30918)
 
