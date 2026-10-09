@@ -67,7 +67,7 @@ Complex-valued signals like MRI and audio spectrograms are typically modelled as
 
 ### SADGE: Spatially-Adaptive Diffusion Guided by Estimated Degradation for Image Restoration
 
-{{< venue "STODY workshop" >}}
+{{< venue "AI for Stochastic Dynamics workshop" >}}
 
 Dominik Galus, Michał Furgała, Piotr Ryszko, **Wojciech Kozłowski**
 
